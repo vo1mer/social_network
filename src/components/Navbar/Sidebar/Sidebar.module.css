@@ -1,0 +1,16 @@
+.sidebar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: black;
+}
+
+.photo{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+.sidebarTitle{
+    text-align: center;
+}
