@@ -1,0 +1,33 @@
+.userInfo{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    margin: 15px auto;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.user{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.user__photoAva{
+    width: 60px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.aboutUser{
+    border: 1px solid rgba(87, 87, 87, 0.44);
+    border-radius: 5px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
