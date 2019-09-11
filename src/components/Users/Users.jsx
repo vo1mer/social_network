@@ -2,27 +2,32 @@ import React from 'react';
 import s from './Users.module.css';
 import * as axios from "axios";
 
-let Users = (props) => {
+class Users extends React.Component{
 
-    let getUsers = () => {
+    constructor(props){
+        super(props);
 
-        if (props.users.length === 0) {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            this.props.setUsers(response.data.items);
+        });
 
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                props.setUsers(response.data.items);
-            });
-        }
+    }
+
+    getUsers = () => {
+
     };
+
+    render() {
         return <div>
-            <button onClick={getUsers}>Get users</button>
-        {
-            props.users.map(u => <div key={u.id}  className={s.userInfo}>
+
+            {
+                this.props.users.map(u => <div key={u.id}  className={s.userInfo}>
                     <div className={s.user}>
                         <img src={u.photos.small != null ? u.photos.small : 'https://icon2.kisspng.com/20180408/taq/kisspng-computer-icons-computer-programming-programmer-ava-mechanical-5ac9dc06d55487.4029071315231785028738.jpg'} className={s.user__photoAva} alt=''/>
 
                         {u.followed
-                            ? <button onClick={ () => { props.unfollow(u.id) }}>Unfollow</button>
-                            : <button onClick={ () => { props.follow(u.id) }}>follow</button>}
+                            ? <button onClick={ () => { this.props.unfollow(u.id) }}>Unfollow</button>
+                            : <button onClick={ () => { this.props.follow(u.id) }}>follow</button>}
                     </div>
                     <div className={s.aboutUser}>
                         <div>
@@ -35,7 +40,9 @@ let Users = (props) => {
                         </div>
                     </div>
                 </div>)
-        }
-    </div>
-};
+            }
+        </div>
+    }
+}
+
 export default Users;
